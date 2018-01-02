@@ -2,3 +2,10 @@ h1 {
   font-family: helvetica;
   font-weight: 200;
 }
+
+#camera {
+  width: 720px;
+  height: 480px;
+  text-align: center;
+  border: 1px solid red;
+}
