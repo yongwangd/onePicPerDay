@@ -2,7 +2,7 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
-const AutoLaunch = require('auto-launch');
+// const AutoLaunch = require('auto-launch');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -84,11 +84,11 @@ app.on('activate', () => {
   }
 });
 
-const thisAppAutoLauncher = new AutoLaunch({
-  name: 'OnePicPerDay',
-  path: '/Applications/OnePicPerDay.app'
-});
-thisAppAutoLauncher.enable();
-thisAppAutoLauncher
-  .isEnabled()
-  .then(enable => console.log('auto launch, enable', enable));
+// const thisAppAutoLauncher = new AutoLaunch({
+//   name: 'OnePicPerDay',
+//   path: '/Applications/OnePicPerDay.app'
+// });
+// thisAppAutoLauncher.enable();
+// thisAppAutoLauncher
+//   .isEnabled()
+//   .then(enable => console.log('auto launch, enable', enable));
