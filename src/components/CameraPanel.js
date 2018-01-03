@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { captureCam, enableCam, disableCam } from '../lib/webCamUtil';
+import {
+  captureCam,
+  enableCam,
+  disableCam,
+  takeCapture
+} from '../lib/webCamUtil';
 
 class CameraPanel extends Component {
   state = {
@@ -21,9 +26,10 @@ class CameraPanel extends Component {
 
   capture = () => {
     setInterval(() => {
-      enableCam('#camera')
-        .then(() => captureCam())
-        .then(() => disableCam(300));
+      takeCapture('#camera');
+      // enableCam('#camera')
+      //   .then(() => captureCam())
+      //   .then(() => disableCam(2000));
     }, 10000);
   };
 

@@ -7,7 +7,7 @@ import {
   processBase64Image
 } from './imageUtils';
 import { currentTimeStr } from './dateTimeUtil';
-import { setTimeout } from 'timers';
+import { delay } from './tools';
 
 export const camLive$ = Observable.fromEvent(WebCam, 'live');
 
@@ -40,3 +40,9 @@ export const captureCam = () =>
         .catch(e => reject(e));
     });
   });
+
+export const takeCapture = selector =>
+  enableCam(selector)
+    .then(() => delay(300))
+    .then(captureCam)
+    .then(() => disableCam());
