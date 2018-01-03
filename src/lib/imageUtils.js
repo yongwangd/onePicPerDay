@@ -4,6 +4,7 @@ import path from 'path';
 import WebCam from 'webcamjs';
 import { Buffer } from 'buffer';
 import { currentTimeStr } from './dateTimeUtil';
+import { camLive$ } from './webCamUtil';
 
 const { app, dialog } = remote;
 
