@@ -1,5 +1,6 @@
 import { remote } from 'electron';
 import fs from 'fs';
+import WebCam from 'webcamjs';
 
 const { dialog } = remote;
 

@@ -34,13 +34,7 @@ class CameraPanel extends Component {
     const { enabled } = this.state;
     return (
       <div className="camera-panel">
-        <div
-          id="camera"
-          ref={cam => {
-            console.log('cam', cam);
-            this.cam = cam;
-          }}
-        />
+        <div id="camera" ref={cam => (this.cam = cam)} />
         {enabled && <button onClick={start}>Disable</button>}
         {!enabled && <button onClick={start}>start</button>}
         <button onClick={capture}>capture</button>
