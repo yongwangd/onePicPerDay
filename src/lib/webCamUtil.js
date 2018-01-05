@@ -1,5 +1,5 @@
 import WebCam from 'webcamjs';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 import path from 'path';
 import {
   getMediaFolder,
@@ -19,12 +19,12 @@ export const enableCam = selector =>
     return camLive$.catch(err => reject(err)).subscribe(e => resolve(e));
   });
 
-export const disableCam = (delay = 0) =>
+export const disableCam = (delayTime = 0) =>
   new Promise(resolve => {
     setTimeout(() => {
       WebCam.reset();
       resolve('done');
-    }, delay);
+    }, delayTime);
   });
 
 export const captureCam = () =>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Observable } from 'rxjs/Rx';
+
 import {
   captureCam,
   enableCam,
@@ -24,14 +26,10 @@ class CameraPanel extends Component {
     this.setState({ enabled: false });
   };
 
-  capture = () => {
-    setInterval(() => {
-      takeCapture('#camera');
-      // enableCam('#camera')
-      //   .then(() => captureCam())
-      //   .then(() => disableCam(2000));
-    }, 10000);
-  };
+  capture = () =>
+    Observable.interval(10000)
+      .take(3)
+      .subscribe(() => takeCapture('#camera'));
 
   render() {
     const { capture, showCam, closeCam } = this;
