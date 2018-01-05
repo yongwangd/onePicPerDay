@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Observable } from 'rxjs/Rx';
-import '../lib/dataStore';
+import { getStore, store$ } from '../store/store';
+import '../store/actions';
 
 import {
   captureCam,
@@ -8,6 +9,9 @@ import {
   disableCam,
   takeCapture
 } from '../lib/webCamUtil';
+
+console.log('store is ', getStore());
+store$.subscribe(console.log);
 
 class CameraPanel extends Component {
   state = {

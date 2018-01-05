@@ -9,13 +9,13 @@
     "url": "https://github.com/pbarbiero/basic-electron-react-boilerplate.git"
   },
   "license": "MIT",
-  "browserslist": ["last 2 Chrome versions"],
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
   "main": "main.js",
   "scripts": {
-    "prod":
-      "webpack --config webpack.build.config.js && electron --noDevServer .",
-    "dev":
-      "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
+    "prod": "webpack --config webpack.build.config.js && electron --noDevServer .",
+    "dev": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
     "build": "webpack --config webpack.build.config.js",
     "package": "webpack --config webpack.build.config.js",
     "postpackage": "electron-packager ./ OnePicPerDay --out=./builds"
@@ -56,6 +56,7 @@
     "luxon": "^0.2.11",
     "ramda": "^0.25.0",
     "rxjs": "^5.5.6",
+    "uuid": "^3.1.0",
     "webcamjs": "^1.0.24"
   }
 }
