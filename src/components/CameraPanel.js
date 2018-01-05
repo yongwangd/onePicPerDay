@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Observable } from 'rxjs/Rx';
+import '../lib/dataStore';
 
 import {
   captureCam,

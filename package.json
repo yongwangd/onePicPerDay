@@ -9,13 +9,13 @@
     "url": "https://github.com/pbarbiero/basic-electron-react-boilerplate.git"
   },
   "license": "MIT",
-  "browserslist": [
-    "last 2 Chrome versions"
-  ],
+  "browserslist": ["last 2 Chrome versions"],
   "main": "main.js",
   "scripts": {
-    "prod": "webpack --config webpack.build.config.js && electron --noDevServer .",
-    "dev": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
+    "prod":
+      "webpack --config webpack.build.config.js && electron --noDevServer .",
+    "dev":
+      "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
     "build": "webpack --config webpack.build.config.js",
     "package": "webpack --config webpack.build.config.js",
     "postpackage": "electron-packager ./ OnePicPerDay --out=./builds"
@@ -25,6 +25,7 @@
     "babel-eslint": "^8.1.2",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-react": "^6.24.1",
     "babili-webpack-plugin": "^0.1.2",
     "css-loader": "^0.28.1",
