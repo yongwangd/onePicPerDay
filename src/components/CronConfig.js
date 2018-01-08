@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
-
 import actions from '../store/actions';
-import { store$ } from '../store/store';
+import connect from '../store/connect';
 
 const { createNewJob, deleteJob } = actions;
 
 console.log(deleteJob, 'des');
+
 class CronConfig extends Component {
   state = {
-    input: '',
-    jobs: []
+    input: ''
   };
-  componentDidMount() {
-    store$.subscribe(st => {
-      const arr = Object.entries(st.jobs).map(([id, value]) => ({
-        id,
-        ...value
-      }));
+  // componentDidMount() {
+  //   store$.subscribe(st => {
+  //     const arr = Object.entries(st.jobs).map(([id, value]) => ({
+  //       id,
+  //       ...value
+  //     }));
 
-      console.log('arr', arr);
-      this.setState({ jobs: arr });
-    });
+  //     console.log('arr', arr);
+  //     this.setState({ jobs: arr });
+  //   });
 
-    // store$.subscribe(st => this.setState({ jobs: st.jobs }));
-  }
+  //   // store$.subscribe(st => this.setState({ jobs: st.jobs }));
+  // }
   render() {
-    const { input, jobs } = this.state;
+    const { input } = this.state;
+    const { jobs } = this.props;
+    console.log('props are ', this.props);
     return (
       <div className="cron-config">
         <input
@@ -46,4 +47,12 @@ class CronConfig extends Component {
   }
 }
 
-export default CronConfig;
+export default connect(st => {
+  const jobs = Object.entries(st.jobs).map(([id, value]) => ({
+    id,
+    ...value
+  }));
+  return { jobs };
+})(CronConfig);
+
+// export default CronConfig;
