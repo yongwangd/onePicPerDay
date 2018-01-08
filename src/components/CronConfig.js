@@ -10,23 +10,9 @@ class CronConfig extends Component {
   state = {
     input: ''
   };
-  // componentDidMount() {
-  //   store$.subscribe(st => {
-  //     const arr = Object.entries(st.jobs).map(([id, value]) => ({
-  //       id,
-  //       ...value
-  //     }));
-
-  //     console.log('arr', arr);
-  //     this.setState({ jobs: arr });
-  //   });
-
-  //   // store$.subscribe(st => this.setState({ jobs: st.jobs }));
-  // }
   render() {
     const { input } = this.state;
     const { jobs } = this.props;
-    console.log('props are ', this.props);
     return (
       <div className="cron-config">
         <input
