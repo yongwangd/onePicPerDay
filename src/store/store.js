@@ -18,10 +18,13 @@ function parseDataFile(filePath) {
 }
 
 const userDataPath = (electron.app || electron.remote.app).getPath('userData');
-console.log('user path', userDataPath);
 const dataFile = path.join(userDataPath, 'userData.json');
 const initStore = parseDataFile(dataFile) || initValue;
 
 export const getStore = () => store;
 export const store$ = startStoreStream(initStore);
-store$.subscribe(val => (store = val));
+
+store$.subscribe(val => {
+  store = val;
+  fs.writeFileSync(dataFile, JSON.stringify(store));
+});
