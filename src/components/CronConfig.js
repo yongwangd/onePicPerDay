@@ -4,8 +4,6 @@ import connect from '../store/connect';
 
 const { createNewJob, deleteJob } = actions;
 
-console.log(deleteJob, 'des');
-
 class CronConfig extends Component {
   state = {
     input: ''

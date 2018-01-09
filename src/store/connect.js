@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { store$ } from './store';
 
-const connect = selector => Cmp =>
+export default selector => Cmp =>
   class Connected extends Component {
     state = {};
     componentWillMount() {
@@ -11,5 +11,3 @@ const connect = selector => Cmp =>
       return <Cmp {...this.props} {...this.state} />;
     }
   };
-
-export default connect;

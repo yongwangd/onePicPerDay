@@ -27,13 +27,13 @@ export const disableCam = (delayTime = 0) =>
     }, delayTime);
   });
 
-export const captureCam = () =>
+export const captureCam = mediaFolder =>
   new Promise((resolve, reject) => {
     WebCam.snap(uri => {
       const imageBuffer = processBase64Image(uri);
 
       return writeDataToFile(
-        path.join(getMediaFolder(), `${currentTimeStr()}.png`),
+        path.join(mediaFolder, `${currentTimeStr()}.png`),
         imageBuffer.data
       )
         .then(() => resolve('done'))
@@ -41,8 +41,8 @@ export const captureCam = () =>
     });
   });
 
-export const takeCapture = selector =>
+export const takeCapture = (selector, mediaFolder = getMediaFolder()) =>
   enableCam(selector)
     .then(() => delay(300))
-    .then(captureCam)
+    .then(() => captureCam(mediaFolder))
     .then(() => disableCam());
