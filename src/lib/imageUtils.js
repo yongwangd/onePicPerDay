@@ -13,6 +13,7 @@ export const getVideoFolder = () => path.join(getMediaFolder(), 'Videos');
 export function processBase64Image(dataString) {
   const matches = dataString.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
   // const matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+  console.log('test');
 
   if (matches.length !== 3) {
     return new Error('Invalid input string');
