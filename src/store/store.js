@@ -2,9 +2,9 @@ import electron from 'electron';
 import path from 'path';
 import fs from 'fs';
 import Rx from 'rxjs/Rx';
-import * as R from 'ramda';
 import { startStoreStream } from './configStore';
 import { cronStream } from '../lib/cronUtils';
+import { takeCapture } from '../lib/webCamUtil';
 
 let store = null;
 
@@ -27,6 +27,11 @@ const initStore = parseDataFile(dataFile) || initValue;
 export const getStore = () => store;
 export const store$ = startStoreStream(initStore);
 
+store$.subscribe(val => {
+  store = val;
+  fs.writeFileSync(dataFile, JSON.stringify(store));
+});
+
 let lastCrons = null;
 
 const makeCronJob = store => {
@@ -46,10 +51,5 @@ const makeCronJob = store => {
   return Rx.Observable.merge(...lastCrons.map(it => it.cron.map(() => it.job)));
 };
 
-store$.switchMap(makeCronJob).subscribe(x => console.log('switch', x));
-
-store$.subscribe(val => {
-  store = val;
-
-  fs.writeFileSync(dataFile, JSON.stringify(store));
-});
+// store$.switchMap(makeCronJob).subscribe(x => takeCapture('#camera'));
+store$.switchMap(makeCronJob).subscribe(x => console.log(x));

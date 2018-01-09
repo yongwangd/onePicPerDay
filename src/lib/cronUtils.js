@@ -16,7 +16,10 @@ export const cronStream = (pattern, stopCallback = () => {}) => {
   );
   job.start();
 
-  cron$.stop = () => job.stop();
+  cron$.stop = () => {
+    job.stop();
+    cron$.complete();
+  };
 
   return cron$;
   // return {
