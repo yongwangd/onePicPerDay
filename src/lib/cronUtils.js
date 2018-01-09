@@ -14,11 +14,15 @@ export const cronStream = (pattern, stopCallback = () => {}) => {
     },
     stopCallback
   );
+  job.start();
 
-  return {
-    subscribe: fn => cron$.subscribe(fn),
-    start: () => job.start(),
-    stop: () => job.stop(),
-    isRunning: () => job.running === true
-  };
+  cron$.stop = () => job.stop();
+
+  return cron$;
+  // return {
+  //   subscribe: fn => cron$.subscribe(fn),
+  //   start: () => job.start(),
+  //   stop: () => job.stop(),
+  //   isRunning: () => job.running === true
+  // };
 };
